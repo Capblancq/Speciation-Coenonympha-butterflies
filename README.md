@@ -1,4 +1,4 @@
-# Speciation process in alpine Coenonympha butterflies species
+# Speciation process in alpine Coenonympha butterfly species
 
 1/ Folder Speciation-Process contains all the scripts used to produce the HINDEX and the demographic inferences described in Capblancq et al. (DOI, hyper link)
 
