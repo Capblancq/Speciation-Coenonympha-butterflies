@@ -2,4 +2,4 @@
 
 Reference: Capblancq et al. submitted DOI: ??
 
-Data needed by the different scripts have been submitted to the Dryad Repository with the accession number: ???
+Data needed by the different scripts have been submitted to the Dryad Repository with the accession number: doi:10.5061/dryad.4mj8gg0
