@@ -8,8 +8,6 @@
 ##############################################################################################
 ##############################################################################################
 
-setwd("~/Documents/ProjetPapillons/These_Hybridation_Coenonympha/Papier3_Zones_hybrides/Clines/Genetique/")
-
 library(introgress)
 library(raster)
 library(ggplot2)
@@ -28,43 +26,11 @@ library(doParallel)
 #### Data filtering ####
 
 # Information about samples
-info<-read.table("~/Documents/ProjetPapillons/These_Hybridation_Coenonympha/Papier3_Zones_hybrides/infos_ind_VARS", header=T, sep = ",")
+info<-read.table("infos_ind_VARS", header=T, sep = ",")
 
 # Genetic data
-GenData <- genind2df(read.genepop("~/Documents/ProjetPapillons/These_Hybridation_Coenonympha/DATA/SNPs/Papier3/VARS/1SNP_random/populations.snps.gen"), pop = NULL, sep = "", usepop = FALSE, oneColPerAll = FALSE)[,-1]
-row.names(GenData)<- unlist(strsplit(row.names(GenData), split = ".R1"))
-
-## Remove individuals with very few data
-GenData <- GenData[which(apply(GenData,1 , function(x) sum(is.na(x))/length(x))<0.6),]
-
-GenData[GenData[]=="0101"] <- "1/1"
-GenData[GenData[]=="0102"] <- "1/2"
-GenData[GenData[]=="0201"] <- "1/2"
-GenData[GenData[]=="0103"] <- "1/3"
-GenData[GenData[]=="0301"] <- "1/3"
-GenData[GenData[]=="0104"] <- "1/4"
-GenData[GenData[]=="0401"] <- "1/4"
-GenData[GenData[]=="0202"] <- "2/2"
-GenData[GenData[]=="0203"] <- "2/3"
-GenData[GenData[]=="0302"] <- "2/3"
-GenData[GenData[]=="0204"] <- "2/4"
-GenData[GenData[]=="0402"] <- "2/4"
-GenData[GenData[]=="0303"] <- "3/3"
-GenData[GenData[]=="0304"] <- "3/4"
-GenData[GenData[]=="0403"] <- "3/4"
-GenData[GenData[]=="0404"] <- "4/4"
-GenData[is.na(GenData[])] <- "NA/NA"
-
-GenData <- GenData[row.names(GenData)%in%info$Ind,]
-info<-as.data.frame(info[match(row.names(GenData), info$Ind, nomatch = 0),])
-#info$Pop[which(info$Ind=="SPA_2_1")] <- "SPA"
-
-## Remove loci with no data in one of the 3 populations
-GenData <- GenData[,-which(apply(GenData[info$Zone=="GARDETTA",], 2, function(x) length(table(x)))==1 | apply(GenData[info$Zone=="VARS",], 2, function(x) length(table(x)))==1 | apply(GenData[info$Zone=="MACROMMA",], 2, function(x) length(table(x)))==1)]
-GenData$Ind <- info$Ind
-GenData$Zone <- info$Zone
-GenData <- GenData[,c(length(colnames(GenData))-1, length(colnames(GenData)), 1:(length(colnames(GenData))-2))]
-
+GenData <- read.table("Coenonympha_1SNPrandom.gen", header = T)
+row.names(GenData)<- GenData$Ind
 
 ################
 #### HINDEX ####
