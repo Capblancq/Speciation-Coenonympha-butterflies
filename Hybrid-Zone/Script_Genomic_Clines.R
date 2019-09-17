@@ -22,8 +22,8 @@ library(foreach)
 library(doParallel)
 
 
-########################
-#### Data filtering ####
+##############
+#### Data ####
 
 # Information about samples
 info<-read.table("infos_ind_VARS", header=T, sep = ",")
