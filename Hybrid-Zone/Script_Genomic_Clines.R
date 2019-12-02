@@ -58,9 +58,6 @@ dev.off()
 tab<-cbind(as.data.frame(data_VARS$Parental1.allele.freq), as.data.frame(data_VARS$Parental2.allele.freq))
 snps_fixed<-c(row.names(tab[which(tab[,1]>=0.9 & tab[,4]>=0.9),]), row.names(tab[which(tab[,2]>=0.9 & tab[,3]>=0.9),]))
 
-## And with only one SNPs by ddRAD tag
-snps_fixed <- as.vector(aggregate(snps_fixed, by = list(unlist(lapply(strsplit(snps_fixed, split = "_"), function(x) x[1]))), FUN = head, 1)[,2])
-
 ## Geographic clines 
 dist_Vars<-pointDistance(c(997027.1, 6383629.52),info[info$Zone=="VARS",4:5], lonlat=FALSE)
 pdf("./HINDEX.pdf", width = 5, height = 5)
@@ -71,7 +68,7 @@ dev.off()
 ########################
 #### Genetic clines ####
 
-### Frequences alleliques par site 
+### Allelic frequency per site 
 countpop<-NULL
 nbindpop<-NULL
 freq<-NULL
@@ -103,7 +100,7 @@ hindexglob<-aggregate(HINDEX_VARS$h, by = list(info$Pop[info$Zone=="VARS"]), mea
 row.names(hindexglob) <- hindexglob$Group.1
 hindexglob <- hindexglob[c("TOU", "SPA", "SPA_2","SPA_3", "MEL_INF", "MEL_SUP", "SLC", "VAR_1", "VAR_2", "VAR_3", "VAR_N"),"x"]
 
-### Mise en forme des donnees pour la frequence moyenne
+### Formating data
 c.snps_VARS<-lapply(1:nrow(PopFreqA2), function(x) hzar.doMolecularData1DPops(distance = dist_Vars_pop$x, pObs = as.numeric(PopFreqA2[x,]), nEff=as.numeric(nbind)))
 c.snps_VARS[[length(c.snps_VARS)+1]]<-hzar.doMolecularData1DPops(distance = dist_Vars_pop$x, pObs = as.numeric(freqglob), nEff=as.numeric(nbind))
 c.snps_VARS[[length(c.snps_VARS)+1]]<-hzar.doMolecularData1DPops(distance = dist_Vars_pop$x, pObs = as.numeric(hindexglob), nEff=as.numeric(nbind))
