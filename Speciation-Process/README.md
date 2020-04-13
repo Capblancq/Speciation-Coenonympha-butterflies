@@ -1,5 +1,5 @@
 # Speciation with gene flow: evidence from a complex of alpine butterflies (Coenonympha, Satyridae) 
 
-Reference: Capblancq et al. submitted DOI: 10.1111/eva.12925
+Reference: Capblancq et al. 2019, Ecology & Evolution, DOI: 10.1002/ece3.5220
 
-Data can be found on the Dryad Repository: https://doi.org/10.5061/dryad.4mj8gg0
+Data: https://doi.org/10.5061/dryad.dq444fr & https://doi.org/10.5061/dryad.j4389
