@@ -1,5 +1,5 @@
 # Genetic, morphological and ecological variation across a sharp hybrid zone between two alpine butterflies species 
 
-Reference: Capblancq et al. submitted DOI: ??
+Reference: Capblancq et al. 2020, Evolutionary Applications, DOI: 10.1111/eva.12925  
 
-Data needed by the different scripts have been submitted to the Dryad Repository with the accession number: ??
+Data: https://doi.org/10.5061/dryad.4mj8gg0
