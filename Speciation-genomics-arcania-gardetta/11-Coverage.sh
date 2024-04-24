@@ -17,17 +17,17 @@ mkdir /scratch/tcapblancq/Sequencing
 output=/scratch/tcapblancq/Sequencing
 
 # To do first
-#awk 'NR>1{print $1,$2-25000,$2+25000}' windows.txt > windows.bed
+awk 'NR>1{print $1,$2-25000,$2+25000}' windows.txt > windows.bed
 
 # Estimates coverage for each window along the genome
-#for BAM in ${input}/*.final.bam
-#do
-#	sample=${BAM/.final.bam/}
-#	name=`basename ${sample}`
-#	
-#	# Find per base coverage for each window
-#	samtools bedcov windows.bed ${BAM} -Q 20 -d 4 > ${output}/coverage_${name}.txt
-#done
+for BAM in ${input}/*.final.bam
+do
+	sample=${BAM/.final.bam/}
+	name=`basename ${sample}`
+	
+	# Find per base coverage for each window
+	samtools bedcov windows.bed ${BAM} -Q 20 -d 4 > ${output}/coverage_${name}.txt
+done
 
 # Find the number of SNP per window
 while IFS= read -r line
