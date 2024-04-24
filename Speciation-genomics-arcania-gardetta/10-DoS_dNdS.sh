@@ -21,10 +21,10 @@ output=/scratch/tcapblancq/dNdS
 cd ${output}
 
 ## The vcf file had to be bgzipped and indexed as below before running that script 
-#bcftools view -I ${input}/All_polymorphicsites_annotated.vcf -O z -o ${input}/All_polymorphicsites_annotated.vcf.gz
-#bcftools index ${input}/All_polymorphicsites_annotated.vcf.gz
+bcftools view -I ${input}/All_polymorphicsites_annotated.vcf -O z -o ${input}/All_polymorphicsites_annotated.vcf.gz
+bcftools index ${input}/All_polymorphicsites_annotated.vcf.gz
 
-for i in {29..30}
+for i in {1..30}
 do
 
 	# Target chromosome
